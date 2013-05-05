@@ -1,0 +1,15 @@
+[user]
+	name = Cheukyin Yip
+	email = cheukyinyip0077@gmail.com
+[core]
+	editor = vim
+[merge]
+	tool = vimdiff
+[color]
+	status = auto
+	branch = auto
+	interactive = auto
+	diff = auto
+	ui = true
+[http]
+	sslVerify = false
