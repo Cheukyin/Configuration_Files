@@ -44,7 +44,7 @@
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
-set history=700
+set history=300
 
 " Enable filetype plugins
 filetype plugin on
@@ -68,7 +68,7 @@ nmap <leader>w :w!<cr>
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
+set so=4
 
 " Turn on the WiLd menu
 set wildmenu
@@ -275,17 +275,17 @@ hi User9 ctermfg=darkmagenta  ctermbg=Green cterm=bold
 map 0 ^
 
 " Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
-endif
+"nmap <M-j> mz:m+<cr>`z
+"nmap <M-k> mz:m-2<cr>`z
+"vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+"vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+"
+"if has("mac") || has("macunix")
+"  nmap <D-j> <M-j>
+"  nmap <D-k> <M-k>
+"  vmap <D-j> <M-j>
+"  vmap <D-k> <M-k>
+"endif
 
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
@@ -316,18 +316,9 @@ vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
 "
 " When you search with vimgrep, display your results in cope by doing:
 "   <leader>cc
-"
-" To go to the next search result do:
-"   <leader>n
-"
-" To go to the previous search results do:
-"   <leader>p
-"
+
 map <leader>cc :botright cope<cr>
 map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -472,3 +463,34 @@ imap <C-J> <ESC>ja
 imap <C-K> <ESC>ka
 imap <C-H> <ESC>i
 imap <C-L> <ESC>la
+
+nmap <space> za
+
+"vmap <leader>e :s/^\(\s*\)*/\1\/\//g<CR><leader><cr>
+
+nmap <F12> :source ~/.vimrc<CR>
+
+"##### auto fcitx  ###########
+let g:input_toggle = 1
+function! Fcitx2en()
+    let s:input_status = system("fcitx-remote")
+    if s:input_status == 2
+        let g:input_toggle = 1
+        let l:a = system("fcitx-remote -c")
+    endif
+endfunction
+" 
+" function! Fcitx2zh()
+"     let s:input_status = system("fcitx-remote")
+"     if s:input_status != 2 && g:input_toggle == 1
+"         let l:a = system("fcitx-remote -o")
+"         let g:input_toggle = 0
+"     endif
+" endfunction
+" 
+set ttimeoutlen=150
+"退出插入模式
+autocmd InsertLeave * call Fcitx2en()
+" "进入插入模式
+" autocmd InsertEnter * call Fcitx2zh()
+" "##### auto fcitx end ######
