@@ -270,6 +270,8 @@ hi User9 ctermfg=darkmagenta  ctermbg=Green cterm=bold
 hi string ctermfg=1  ctermbg=black cterm=bold
 hi Folded ctermfg=6  ctermbg=0 cterm=bold
 hi Comment ctermfg=4 cterm=bold
+hi Pmenu ctermfg=black ctermbg=white cterm=bold
+hi PmenuSbar ctermfg=0 ctermbg=white cterm=bold
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
