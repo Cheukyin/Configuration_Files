@@ -68,7 +68,7 @@ nmap <leader>w :w!<cr>
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 7 lines to the cursor - when moving vertically using j/k
-set so=4
+set so=3
 
 " Turn on the WiLd menu
 set wildmenu
@@ -138,7 +138,7 @@ if has("gui_running")
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
-set fileencodings=gb2312,gb18030,utf-8
+set fileencodings=utf-8,gb2312,gb18030
 set termencoding=utf-8
 set encoding=prc
 
@@ -188,8 +188,8 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Treat long lines as break lines (useful when moving around in them)
+"pj""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tpjreat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
 
@@ -267,6 +267,9 @@ hi User7 ctermfg=7*  ctermbg=1* cterm=bold
 hi User8 ctermfg=yellow  ctermbg=black cterm=bold
 hi User9 ctermfg=darkmagenta  ctermbg=Green cterm=bold
 "hi User0 ctermfg=#ffffff  ctermbg=#094afec term=bold
+hi string ctermfg=1  ctermbg=black cterm=bold
+hi Folded ctermfg=6  ctermbg=0 cterm=bold
+hi Comment ctermfg=4 cterm=bold
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
@@ -428,7 +431,7 @@ nnoremap <silent> <F3> :Grep<CR>
 highlight LineNr ctermfg=lightblue
 highlight LineNr ctermbg=black
 
-nmap <F5> :make<CR>
+autocmd FileType c nmap <F5> :make<CR>
 
 command -bang -nargs=? QFix call QFixToggle(<bang>0)
 function! QFixToggle(forced)
@@ -459,8 +462,6 @@ set foldmethod=syntax    " manual : Folds are created manually.
 "set foldopen-=search     " dont open folds when I search into thm
 "set foldopen-=undo       " dont open folds when I undo stuff
 
-imap <C-J> <ESC>ja
-imap <C-K> <ESC>ka
 imap <C-H> <ESC>i
 imap <C-L> <ESC>la
 
@@ -494,3 +495,28 @@ autocmd InsertLeave * call Fcitx2en()
 " "进入插入模式
 " autocmd InsertEnter * call Fcitx2zh()
 " "##### auto fcitx end ######
+
+"let g:indent_guides_guide_size=1
+"hi IndentGuidesEven ctermbg=white
+"hi IndentGuidesOdd  ctermbg=grey 
+
+set mouse=a
+
+au BufNewFile,BufRead *.py,*.pyw setf python
+autocmd FileType python let g:pydiction_location = '~/.vim/ftplugin/complete-dict'
+set omnifunc=pythoncomplete
+set completeopt=longest,menuone
+let g:SuperTabRetainCompletionType=2
+let g:SuperTabDefaultCompletionType="<C-X><C-O>"
+
+inoremap ( ()<left>
+vnoremap ( <S-I>(<ESC>gv<S-A><right>)<ESC>
+inoremap < <><left>
+vnoremap < <S-I><<ESC>gv<S-A><right>><ESC>
+inoremap [ []<left>
+vnoremap [ <S-I>[<ESC>gv<S-A><right>]<ESC>
+inoremap ' ''<left>
+vnoremap ' <S-I>'<ESC>gv<S-A><right>'<ESC>
+inoremap " ""<left>
+vnoremap " <S-I>"<ESC>gv<S-A><right>"<ESC>
+vnoremap { <S-I>{<ESC>gv<S-A><right>}<ESC>
