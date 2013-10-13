@@ -506,7 +506,8 @@ set mouse=a
 
 au BufNewFile,BufRead *.py,*.pyw setf python
 autocmd FileType python let g:pydiction_location = '~/.vim/ftplugin/complete-dict'
-set omnifunc=pythoncomplete
+"set omnifunc=pythoncomplete
+autocmd FileType python set omnifunc=pythoncomplete#Complete
 set completeopt=longest,menuone
 let g:SuperTabRetainCompletionType=2
 let g:SuperTabDefaultCompletionType="<C-X><C-O>"
@@ -522,3 +523,7 @@ vnoremap ' <S-I>'<ESC>gv<S-A><right>'<ESC>
 inoremap " ""<left>
 vnoremap " <S-I>"<ESC>gv<S-A><right>"<ESC>
 vnoremap { <S-I>{<ESC>gv<S-A><right>}<ESC>
+
+let g:slimv_swank_cmd = '! xterm -e clisp -i /home/cheukyin/.vim/slime/start-swank.lisp &'
+let g:slimv_repl_split=4
+autocmd FileType lisp inoremap ' '
