@@ -524,11 +524,7 @@ inoremap " ""<left>
 vnoremap " <S-I>"<ESC>gv<S-A><right>"<ESC>
 vnoremap { <S-I>{<ESC>gv<S-A><right>}<ESC>
 
-<<<<<<< HEAD
-let g:slimv_swank_cmd = '! screen clisp -i /home/cheukyin/.vim/slime/start-swank.lisp &'
-=======
 "lisp
-let g:slimv_swank_cmd = '! xterm -e clisp -i /home/cheukyin/.vim/slime/start-swank.lisp &'
->>>>>>> 700259f6bc72e42e85cb11a87780a82641378c67
+let g:slimv_swank_cmd = '! screen clisp -i /home/cheukyin/.vim/slime/start-swank.lisp &'
 let g:slimv_repl_split=4
 autocmd FileType lisp inoremap ' '
