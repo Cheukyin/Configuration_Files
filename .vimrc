@@ -454,7 +454,7 @@ nmap <F4> :QFix<CR>
 "set foldenable           " enable folden
 set foldmethod=syntax    " manual : Folds are created manually.
                          " indent : Lines with equal indent form a fold.
-                         " expr   : ï¿½ï¿½foldexprï¿½ï¿½ gives the fold level of a line.
+                         " expr   : ¡®foldexpr¡¯ gives the fold level of a line.
                          " marker : Markers are used to specify folds.
                          " syntax : Syntax highlighting items specify folds.
                          " diff   : Fold text that is not changed.
@@ -492,9 +492,9 @@ endfunction
 " endfunction
 " 
 set ttimeoutlen=150
-"ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
+"ÍË³ö²åÈëÄ£Ê½
 autocmd InsertLeave * call Fcitx2en()
-" "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
+" "½øÈë²åÈëÄ£Ê½
 " autocmd InsertEnter * call Fcitx2zh()
 " "##### auto fcitx end ######
 
@@ -524,7 +524,7 @@ inoremap " ""<left>
 vnoremap " <S-I>"<ESC>gv<S-A><right>"<ESC>
 vnoremap { <S-I>{<ESC>gv<S-A><right>}<ESC>
 
-"lisp
 let g:slimv_swank_cmd = '! screen clisp -i /home/cheukyin/.vim/slime/start-swank.lisp &'
 let g:slimv_repl_split=4
+let g:paredit_mode = 0
 autocmd FileType lisp inoremap ' '
