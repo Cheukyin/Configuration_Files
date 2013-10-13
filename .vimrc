@@ -524,7 +524,13 @@ inoremap " ""<left>
 vnoremap " <S-I>"<ESC>gv<S-A><right>"<ESC>
 vnoremap { <S-I>{<ESC>gv<S-A><right>}<ESC>
 
+"just type the lisp filename in zsh and it will run in gnuscreen ,then type ",c" to open the REPL
 let g:slimv_swank_cmd = '! screen clisp -i /home/cheukyin/.vim/slime/start-swank.lisp &'
 let g:slimv_repl_split=4
 let g:paredit_mode = 0
 autocmd FileType lisp inoremap ' '
+
+"<F10> mapped to send the line under the cursor or the selected text to the repl 
+"<F11> mapped to send the whole buffer to the repl
+autocmd FileType lisp noremap <leader>i :ConqueTermVSplit clisp<cr><cr>
+autocmd FileType python noremap <leader>i :ConqueTermVSplit ipython2<cr><cr>
