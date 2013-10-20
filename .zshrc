@@ -138,6 +138,9 @@ alias hddtemp='sudo hddtemp'
 
 alias x11vnc-start='x11vnc -forever -passwd cheukyin'
 
+alias dualscreen-on='xrandr --output VGA1 --mode 1024x768 --output LVDS1 --auto --left-of VGA1'
+alias dualscreen-off='xrandr --output LVDS1 --auto --output VGA1 --off'
+
 source /usr/share/doc/pkgfile/command-not-found.zsh
 
 #up-line-or-search-prefix () {
