@@ -588,13 +588,27 @@ set csto=1
 set cspc=3
 set cscopequickfix=s-,c-,d-,i-,t-,e-
 cs add ~/.vim/tags/ZigBee/cscope.out
-nmap <C-c>s :vert scs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <C-c>g :vert scs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-c>c :vert scs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <C-c>t :vert scs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <C-c>e :vert scs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <C-c>f :vert scs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-c>i :vert sscs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap <C-c>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
-nmap <C-c> :vsplit<CR>:cstag <C-R>=expand("<cword>")<CR><CR>
+
+noremap <leader>vs :vsplit<cr><C-w>l
+
+nmap <C-c>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-c>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-c>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-c>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-c>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-c>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-c>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-c>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <C-c> :cstag <C-R>=expand("<cword>")<CR><CR>
+
+nmap <C-c><C-c>s :vert scs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-c><C-c>g :vert scs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-c><C-c>c :vert scs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-c><C-c>t :vert scs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-c><C-c>e :vert scs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-c><C-c>f :vert scs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-c><C-c>i :vert sscs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-c><C-c>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <C-c><C-c> :vsplit<CR>:cstag <C-R>=expand("<cword>")<CR><CR>
+
 nmap <C-_> :vsplit<CR><C-]>
