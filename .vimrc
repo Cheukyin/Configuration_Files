@@ -200,10 +200,10 @@ map k gk
 map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-h> <C-W>h
+nmap <C-l> <C-W>l
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
@@ -612,3 +612,22 @@ nmap <C-c><C-c>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
 nmap <C-c><C-c> :vsplit<CR>:cstag <C-R>=expand("<cword>")<CR><CR>
 
 nmap <C-_> :vsplit<CR><C-]>
+
+"preview window toggle for ctags
+let g:PreviewSign="off"
+function! TogglePreview()
+    if g:PreviewSign == "on"
+        let g:PreviewSign= "off"
+        pclose
+    else
+        try
+            let wordUnderCursor = expand("<cword>")
+            execute "ptag " . wordUnderCursor
+            let g:PreviewSign="on"
+        catch
+            echo "No tags for " . wordUnderCursor
+        endtry
+    endif
+endfunction
+
+nmap <C-]>] :call TogglePreview()<CR>
