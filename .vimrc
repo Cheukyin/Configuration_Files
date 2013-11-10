@@ -63,7 +63,6 @@ let g:C_MapLeader = ','
 " Fast saving
 nmap <leader>w :w!<cr>
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -427,6 +426,7 @@ let g:winManagerWindowLayout='FileExplorer|TagList'
 nmap wm :WMToggle<cr>
 
 let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplorerMoreThanOne = 0
 
 nnoremap <silent> <F3> :Grep<CR>
 
@@ -447,8 +447,8 @@ function! QFixToggle(forced)
 endfunction
 
 set enc=utf-8
-nmap <F6> :cn<CR>
-nmap <F7> :cp<CR>
+nmap <F6> :cn<CR><leader>to
+nmap <F7> :cp<CR><leader>to
 nmap <F4> :QFix<CR>
 
 "set foldenable           " enable folden
@@ -508,14 +508,16 @@ au BufNewFile,BufRead *.py,*.pyw setf python
 autocmd FileType python let g:pydiction_location = '~/.vim/ftplugin/complete-dict'
 "set omnifunc=pythoncomplete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
+au BufNewFile,BufRead,BufEnter *.c,*.cpp,*.hpp set omnifunc=omni#cpp#complete#Main
+autocmd FileType lua set omnifunc=luacomplete
 set completeopt=longest,menuone
 let g:SuperTabRetainCompletionType=2
 let g:SuperTabDefaultCompletionType="<C-X><C-O>"
 
 inoremap ( ()<left>
 vnoremap ( <S-I>(<ESC>gv<S-A><right>)<ESC>
-inoremap < <><left>
-vnoremap < <S-I><<ESC>gv<S-A><right>><ESC>
+"inoremap < <><left>
+"vnoremap < <S-I><<ESC>gv<S-A><right>><ESC>
 inoremap [ []<left>
 vnoremap [ <S-I>[<ESC>gv<S-A><right>]<ESC>
 inoremap ' ''<left>
@@ -532,7 +534,67 @@ let g:paredit_mode = 0
 autocmd FileType lisp inoremap ' '
 
 " ",c" to open the repl
-"<F10> mapped to send the line under the cursor or the selected text to the repl 
-"<F11> mapped to send the whole buffer to the repl
-autocmd FileType lisp noremap <leader>i :ConqueTermVSplit clisp<cr><cr>
+"<F10> to send the line under the cursor or the selected text to the repl(work in every mode)
+"<F11> to send the whole buffer to the repl(work in every mode)
+autocmd FileType lisp noremap <leader>i :ConqueTermVSplit mit-scheme<cr><cr>
 autocmd FileType python noremap <leader>i :ConqueTermVSplit ipython2<cr><cr>
+
+" configure tags - add additional tags here or comment out not-used ones
+set tags+=~/.vim/tags/cpp
+"set tags+=~/.vim/tags/gl
+"set tags+=~/.vim/tags/sdl
+"set tags+=~/.vim/tags/qt4
+set tags+=~/.vim/tags/ZigBee/tags
+"set tags+=~/.vim/tags/reg51
+"set tags+=~/.vim/tags/reg52
+set tags+=~/.vim/tags/ioCC2530
+" build tags of your own project with Ctrl-F12
+map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
+" OmniCppComplete
+let OmniCpp_NamespaceSearch = 1
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_ShowAccess = 1
+let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+" automatically open and close the popup menu / preview window
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+
+"Cscope
+"cscope commands:
+"add  : Add a new database             (Usage: add file|dir [pre-path] [flags])
+"find : Query for a pattern            (Usage: find c|d|e|f|g|i|s|t name)
+"       c: Find functions calling this function
+"       d: Find functions called by this function
+"       e: Find this egrep pattern
+"       f: Find this file
+"       g: Find this definition
+"       i: Find files #including this file
+"       s: Find this C symbol
+"       t: Find assignments to
+"help : Show this message              (Usage: help)
+"kill : Kill a connection              (Usage: kill #)
+"reset: Reinit all connections         (Usage: reset)
+"show : Show connections               (Usage: show)
+
+"find . -type f -name "*.h" -o -name "*.c" -o -name "*.cc" -o -name "*.cpp">files.csope
+"sed -i "s/^/\"/;s/$/\"/" files.csope
+
+set switchbuf=useopen
+set csto=1
+set cspc=3
+set cscopequickfix=s-,c-,d-,i-,t-,e-
+cs add ~/.vim/tags/ZigBee/cscope.out
+nmap <C-c>s :vert scs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-c>g :vert scs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-c>c :vert scs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-c>t :vert scs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-c>e :vert scs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-c>f :vert scs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-c>i :vert sscs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-c>d :vert scs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <C-c> :vsplit<CR>:cstag <C-R>=expand("<cword>")<CR><CR>
+nmap <C-_> :vsplit<CR><C-]>
