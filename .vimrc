@@ -635,7 +635,7 @@ nmap <C-_> :vsplit<CR><C-]>
 "endfunction
 
 nmap <leader>pt <S-*>N:ptag <C-R>=expand("<cword>")<CR><CR><C-w>kzi<C-w>j
-nmap <leader>pd :pclose<CR>
+nmap <leader>pd :pclose<CR>:noh<CR>
 
 "update cscope database && ctags
 "have to be in the project dir
