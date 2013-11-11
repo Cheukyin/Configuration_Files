@@ -1,0 +1,4 @@
+ctags -R
+find . -type f -name "*.h" -o -name "*.c" -o -name "*.cc" -o -name "*.cpp">files.csope
+sed -i "s/^/\"/;s/$/\"/" files.csope
+cscope -bqvR -i files.csope

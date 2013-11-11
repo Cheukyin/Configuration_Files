@@ -321,8 +321,8 @@ vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
 " When you search with vimgrep, display your results in cope by doing:
 "   <leader>cc
 
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
+"map <leader>cc :botright cope<cr>
+"map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -344,7 +344,11 @@ map <leader>s? z=
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Quickly open a buffer for scripbble
-map <leader>q :e ~/buffer<cr>
+"map <leader>q :e ~/buffer<cr>
+
+map <leader>q :quit<cr>
+map <leader>qa :qa<cr>
+map <leader>wq :wq<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
@@ -544,7 +548,7 @@ set tags+=~/.vim/tags/cpp
 "set tags+=~/.vim/tags/gl
 "set tags+=~/.vim/tags/sdl
 "set tags+=~/.vim/tags/qt4
-set tags+=~/.vim/tags/ZigBee/tags
+set tags+=tags
 "set tags+=~/.vim/tags/reg51
 "set tags+=~/.vim/tags/reg52
 set tags+=~/.vim/tags/ioCC2530
@@ -591,15 +595,15 @@ cs add ~/.vim/tags/ZigBee/cscope.out
 
 noremap <leader>vs :vsplit<cr><C-w>l
 
-nmap <C-c>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <C-c>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <C-c>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <C-c>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-nmap <C-c>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-nmap <C-c>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-c>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-nmap <C-c>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-nmap <C-c> :cstag <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>cs :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>cg :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>cc :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>ct :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>ce :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>cf :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <leader>ci :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <leader>cd :cs find d <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>c :cstag <C-R>=expand("<cword>")<CR><CR>
 
 nmap <C-c><C-c>s :vert scs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <C-c><C-c>g :vert scs find g <C-R>=expand("<cword>")<CR><CR>
@@ -614,20 +618,33 @@ nmap <C-c><C-c> :vsplit<CR>:cstag <C-R>=expand("<cword>")<CR><CR>
 nmap <C-_> :vsplit<CR><C-]>
 
 "preview window toggle for ctags
-let g:PreviewSign="off"
-function! TogglePreview()
-    if g:PreviewSign == "on"
-        let g:PreviewSign= "off"
-        pclose
-    else
-        try
-            let wordUnderCursor = expand("<cword>")
-            execute "ptag " . wordUnderCursor
-            let g:PreviewSign="on"
-        catch
-            echo "No tags for " . wordUnderCursor
-        endtry
-    endif
+"let g:PreviewSign="off"
+"function! TogglePreview()
+"    if g:PreviewSign == "on"
+"        let g:PreviewSign= "off"
+"        pclose
+"    else
+"        try
+"            let wordUnderCursor = expand("<cword>")
+"            execute "ptag " . wordUnderCursor
+"            let g:PreviewSign="on"
+"        catch
+"            echo "No tags for " . wordUnderCursor
+"        endtry
+"    endif
+"endfunction
+
+nmap <leader>pt <S-*>N:ptag <C-R>=expand("<cword>")<CR><CR><C-w>kzi<C-w>j
+nmap <leader>pd :pclose<CR>
+
+"update cscope database && ctags
+"have to be in the project dir
+function! Update_C_Database()
+    cs kill -1
+    set tags -= tags
+    execute "!~/bash_script/update_vim_database&"
+    set tags += tags
+    cs add cscope.out
 endfunction
 
-nmap <C-]>] :call TogglePreview()<CR>
+nmap <F2> :call Update_C_Database()<CR>
