@@ -256,14 +256,14 @@ set statusline+=%2*\ %y\ \|                                  "FileType
 set statusline+=%2*\ %{''.(&fenc!=''?&fenc:&enc).''}\ \|      "Encoding
 set statusline+=%2*\ %{&ff}\                              "FileFormat (dos/unix..) 
 set statusline+=%3*\ CWD:\ %r%{getcwd()}%h\ 
-set statusline+=%0*\ row:\ %l/%L\ (%p%%)\ \|             "Rownumber/total (%)
-set statusline+=%0*\ col:\ %03c\                            "Colnr
+set statusline+=%2*\ row:\ %l/%L\ (%p%%)\ \|             "Rownumber/total (%)
+set statusline+=%2*\ col:\ %03c\                            "Colnr
 set statusline+=%8*\ \ %m%r%w\ %P\ \                      "Modified? Readonly? Top/bot.
 set statusline+=%1*\ 
 
 "hi User1 ctermfg=#ffdad8  ctermbg=#880c0 cterm=bold 
-hi User2 ctermfg=Brown ctermbg=grey cterm=bold 
-hi User3 ctermfg=lightgrey  ctermbg=darkblue cterm=bold
+hi User2 ctermfg=Black ctermbg=grey cterm=bold 
+hi User3 ctermfg=yellow  ctermbg=black cterm=bold
 "hi User4 ctermfg=#112605  ctermbg=#aefe7B cterm=bold
 "hi User5 ctermfg=#051d00  ctermbg=#7dcc7d cterm=bold
 hi User7 ctermfg=7*  ctermbg=1* cterm=bold
