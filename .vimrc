@@ -125,8 +125,12 @@ set tm=500
 syntax enable
 syntax on
 
-colorscheme mellow
-set background=dark
+if has('gui_running')
+        set background=light
+        colorscheme solarized
+else
+    set background=dark
+endif
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -267,10 +271,15 @@ hi User8 ctermfg=yellow  ctermbg=black cterm=bold
 hi User9 ctermfg=darkmagenta  ctermbg=Green cterm=bold
 "hi User0 ctermfg=#ffffff  ctermbg=#094afec term=bold
 hi string ctermfg=1  ctermbg=black cterm=bold
-hi Folded ctermfg=6  ctermbg=0 cterm=bold
-hi Comment ctermfg=4 cterm=bold
+hi Folded ctermfg=6  ctermbg=0
+hi Comment ctermfg=DarkCyan
 hi Pmenu ctermfg=black ctermbg=white cterm=bold
+hi PmenuSel ctermfg=black ctermbg=DarkCyan cterm=bold
 hi PmenuSbar ctermfg=0 ctermbg=white cterm=bold
+hi TypeDef ctermfg=DarkCyan  cterm=bold
+""hi SpecialKey ctermfg=DarkCyan  cterm=bold
+hi PreProc ctermfg=3
+hi Normal ctermfg=7
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
