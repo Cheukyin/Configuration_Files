@@ -251,11 +251,12 @@ set laststatus=2
 "set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l/%L(%p%%)
 set statusline=
 set statusline+=%7*\[%n]                                  "buffernr
-set statusline+=%7*\ %<%F\                                "File+path
+set statusline+=%7*\ %<%f\                                "File
 set statusline+=%2*\ %y\ \|                                  "FileType
 set statusline+=%2*\ %{''.(&fenc!=''?&fenc:&enc).''}\ \|      "Encoding
 set statusline+=%2*\ %{&ff}\                              "FileFormat (dos/unix..) 
-set statusline+=%3*\ CWD:\ %r%{getcwd()}%h\ 
+let cur_cwd=substitute(getcwd(),".*/\\(\\S\\+/\\S\\+$\\)","../\\1","")
+set statusline+=%3*\ CWD:\ %r%{cur_cwd}%h\ 
 set statusline+=%2*\ row:\ %l/%L\ (%p%%)\ \|             "Rownumber/total (%)
 set statusline+=%2*\ col:\ %03c\                            "Colnr
 set statusline+=%8*\ \ %m%r%w\ %P\ \                      "Modified? Readonly? Top/bot.
@@ -542,15 +543,15 @@ set completeopt=longest,menuone
 let g:SuperTabRetainCompletionType=2
 let g:SuperTabDefaultCompletionType="<C-X><C-O>"
 
-iabbrev ( ()
+inoremap ( ()<left>
 vnoremap ( <S-I>(<ESC>gv<S-A><right>)<ESC>
-"iabbrev < <><left>
+"inoremap < <><left>
 "vnoremap < <S-I><<ESC>gv<S-A><right>><ESC>
-iabbrev [ []
+inoremap [ []<left>
 vnoremap [ <S-I>[<ESC>gv<S-A><right>]<ESC>
-iabbrev ' ''
+inoremap ' ''<left>
 vnoremap ' <S-I>'<ESC>gv<S-A><right>'<ESC>
-iabbrev " ""
+inoremap " ""<left>
 vnoremap " <S-I>"<ESC>gv<S-A><right>"<ESC>
 vnoremap { <S-I>{<ESC>gv<S-A><right>}<ESC>
 
