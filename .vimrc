@@ -446,7 +446,24 @@ nnoremap <silent> <F3> :Grep<CR>
 highlight LineNr ctermfg=lightblue
 highlight LineNr ctermbg=black
 
-autocmd FileType c nmap <F5> :make<CR>
+autocmd FileType python
+     \ if findfile("makefile",".") == "makefile" || findfile("Makefile",".") == "Makefile" |
+     \   setlocal makeprg=make |
+     \ else |
+     \   setlocal makeprg=python2\ % |
+     \ endif |
+     \ nnoremap <buffer> <F5> :make<CR>
+
+autocmd FileType c
+     \ if findfile("makefile",".") == "makefile" || findfile("Makefile",".") == "Makefile" |
+     \   setlocal makeprg=make |
+     \ else |
+     \   setlocal makeprg=gcc\ -o\ %:r\ %\ -Wall |
+     \ endif |
+     \ nnoremap <buffer> <F5> :make<CR>
+
+autocmd FileType vim
+     \ nnoremap <buffer> <F5> :source %<CR>
 
 command -bang -nargs=? QFix call QFixToggle(<bang>0)
 function! QFixToggle(forced)
@@ -464,7 +481,7 @@ nmap <F6> :cn<CR><leader>to
 nmap <F7> :cp<CR><leader>to
 nmap <F4> :QFix<CR>
 
-"set foldenable           " enable folden
+"set foldenable          " enable folden
 set foldmethod=syntax    " manual : Folds are created manually.
                          " indent : Lines with equal indent form a fold.
                          " expr   : ¡®foldexpr¡¯ gives the fold level of a line.
@@ -483,8 +500,6 @@ imap <C-L> <ESC>la
 nmap <space> za
 
 "vmap <leader>e :s/^\(\s*\)*/\1\/\//g<CR><leader><cr>
-
-nmap <F12> :source ~/.vimrc<CR>
 
 "##### auto fcitx  ###########
 let g:input_toggle = 1
@@ -527,30 +542,34 @@ set completeopt=longest,menuone
 let g:SuperTabRetainCompletionType=2
 let g:SuperTabDefaultCompletionType="<C-X><C-O>"
 
-inoremap ( ()<left>
+iabbrev ( ()
 vnoremap ( <S-I>(<ESC>gv<S-A><right>)<ESC>
-"inoremap < <><left>
+"iabbrev < <><left>
 "vnoremap < <S-I><<ESC>gv<S-A><right>><ESC>
-inoremap [ []<left>
+iabbrev [ []
 vnoremap [ <S-I>[<ESC>gv<S-A><right>]<ESC>
-inoremap ' ''<left>
+iabbrev ' ''
 vnoremap ' <S-I>'<ESC>gv<S-A><right>'<ESC>
-inoremap " ""<left>
+iabbrev " ""
 vnoremap " <S-I>"<ESC>gv<S-A><right>"<ESC>
 vnoremap { <S-I>{<ESC>gv<S-A><right>}<ESC>
+
+inoremap <leader><leader> <esc>l
+vnoremap <leader><leader> <esc>
+nnoremap <leader><leader> <esc>
 
 "just type the lisp filename in zsh and it will run in gnuscreen ,then type ",c" to open the REPL
 "Only for clisp shell
 let g:slimv_swank_cmd = '! screen clisp -i /home/cheukyin/.vim/slime/start-swank.lisp &'
 let g:slimv_repl_split=4
 let g:paredit_mode = 0
-autocmd FileType lisp inoremap ' '
+autocmd FileType lisp inoremap <buffer> ' '
 
 " ",c" to open the repl
 "<F10> to send the line under the cursor or the selected text to the repl(work in every mode)
 "<F11> to send the whole buffer to the repl(work in every mode)
-autocmd FileType lisp noremap <leader>i :ConqueTermVSplit mit-scheme<cr><cr>
-autocmd FileType python noremap <leader>i :ConqueTermVSplit ipython2<cr><cr>
+autocmd FileType lisp noremap <buffer>  <leader>i :ConqueTermVSplit mit-scheme<cr><cr>
+autocmd FileType python noremap <buffer> <leader>i :ConqueTermVSplit ipython2<cr><cr>
 
 " configure tags - add additional tags here or comment out not-used ones
 set tags+=~/.vim/tags/cpp
