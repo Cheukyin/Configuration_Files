@@ -466,6 +466,14 @@ autocmd FileType c
 autocmd FileType vim
      \ nnoremap <buffer> <F5> :source %<CR>
 
+autocmd FileType html
+     \   setlocal makeprg=chromium\ http://localhost/% |
+     \ nnoremap <buffer> <F5> :make<CR>
+
+autocmd FileType php
+     \   setlocal makeprg=php\ -l\ % |
+     \ nnoremap <buffer> <F12> :make<CR>
+
 command -bang -nargs=? QFix call QFixToggle(<bang>0)
 function! QFixToggle(forced)
       if exists("g:qfix_win") && a:forced == 0
@@ -677,3 +685,20 @@ function! Update_C_Database()
 endfunction
 
 nmap <F2> :call Update_C_Database()<CR>
+
+"HTML Completion
+function! InsertHtmlTag()
+    let pat = '\c<\w\+\s*\(\s\+\w\+\s*=\s*[''#$;,()."a-z0-9]\+\)*\s*>'
+    normal! a>
+    let save_cursor = getpos('.')
+    let result = matchstr(getline(save_cursor[1]), pat)
+    "if (search(pat, 'b', save_cursor[1]) && searchpair('<','','>', 'bn',0,getline('.')) > 0)
+    if (search(pat, 'b', save_cursor[1]))
+        normal! lyiwf>
+        normal! a</
+        normal! p
+        normal! a>
+    endif
+    :call cursor(save_cursor[1], save_cursor[2], save_cursor[3])
+endfunction
+autocmd filetype html,php inoremap > <ESC>:call InsertHtmlTag()<CR>a
