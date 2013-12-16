@@ -10,7 +10,7 @@ compinit
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="fade"
+ZSH_THEME="gianu"
 
 #autoload -U promptinit
 #promptinit
@@ -128,7 +128,7 @@ alias chgrp='sudo chgrp'
 
 alias visudo='sudo visudo'
 
-alias pcmanfm='dbus-launch pcmanfm'
+#alias pcmanfm='dbus-launch pcmanfm'
 
 alias modprobe='sudo modprobe'
 alias insmod='sudo insmod'
@@ -141,7 +141,9 @@ alias x11vnc-start='x11vnc -forever -passwd cheukyin'
 alias dualscreen-on='xrandr --output VGA1 --mode 1024x768 --output LVDS1 --auto --left-of VGA1'
 alias dualscreen-off='xrandr --output LVDS1 --auto --output VGA1 --off'
 
-alias usb2serial='sudo modprobe usbserial vendor=0x11a0 product=0xeb20'
+alias usb2serial='sudo modprobe usbserial vendor=0x0403 product=0x6001'
+
+ZIGBEE=~/share/C51RF-CC2530-PK无线ZigBee网络开发平台V1.10/C51RF-CC2530演示程序/ZigBee2007_PRO演示测试程序/Texas-Instruments/ZStack-CC2530-2.2.0-1.3.0
 
 source /usr/share/doc/pkgfile/command-not-found.zsh
 
