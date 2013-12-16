@@ -1,0 +1,92 @@
+#tilda wicd
+"tilda -c wicd-curses"
+Mod4 + n
+
+#tilda mocp
+"tilda -c mocp"
+Mod4 + s
+
+#tilda ranger
+"tilda -c ranger"
+Mod4 + r
+
+#tilda
+"tilda -c no"
+Mod4 + t
+
+#Dict
+"python2 /home/cheukyin/Downloads/miniDict/ui.py"
+Mod4 + y
+
+#screenshot
+"import /home/cheukyin/tmp.jpg"
+Mod4 + a
+
+#pcmanfm
+#"dbus-launch pcmanfm"
+"pcmanfm"
+Mod4 + p
+
+#chromium
+"chromium&"
+Mod4 + w
+
+#conky
+"conky"
+Mod4 + c
+
+#urxvt
+"urxvt"
+Mod4 + u
+
+#debian-vbox
+"vboxheadless -startvm "debian" &"
+Shift+Alt + d
+
+#debian-xp
+"vboxheadless -startvm "XP" &"
+Shift+Alt + v
+
+#rdesk-xp
+"rdesktop 192.168.57.1:3390 &"
+Shift+Alt + x
+
+#xp-shutdown
+"VBoxManage controlvm XP poweroff"
+Shift+Alt + s
+
+#debian-shutdown
+"VBoxManage controlvm debian poweroff"
+Shift+Alt + b
+
+#rdesk-debian
+"rdesktop 192.168.56.1:3389 &"
+Shift+Alt + r
+
+#easystroke
+"easystroke &"
+Mod4 + e
+
+#mount usb1
+"sudo mount --options=utf8 --rw /dev/sdb /mnt/usb1"
+Mod4 + 1
+
+#umount usb1
+"sudo umount /dev/sdb"
+Shift+Mod4 + 1
+
+#mount usb2
+"sudo mount --options=utf8 --rw /dev/sdc /mnt/usb2"
+Mod4 + 2
+
+#umount usb2
+"sudo umount /dev/sdc"
+Shift+Mod4 + 2
+
+#cairo-dock
+"cairo-dock &"
+Mod4 + g
+
+#alsamixer
+"tilda -c alsamixer"
+Mod4 + m
