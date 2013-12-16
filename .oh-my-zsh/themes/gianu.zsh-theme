@@ -5,7 +5,7 @@
 
 #PROMPT='[%{$fg_bold[white]%}%n%{$reset_color%}@%{$fg_bold[red]%}%m%{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)%{$reset_color%}]$ '
 
-PROMPT=' %F{green}%B%K{green}█▓▒░%F{white}%K{green}%B%n@%m%b%F{green}%K{black}█▓▒░%F{white}%K{black}%B %D{%a %b %d} %D{%I:%M:%S%P} $(git_prompt_info) $(git_prompt_status)
+PROMPT=' %F{green}%B%K{green}█▓▒░%F{white}%K{green}%B%n@%m%b%F{green}%K{black}█▓▒░%F{white}%K{black}%B %D{%a %b %d} %D{%I:%M:%S%P} %{$reset_color%}$(git_prompt_info) $(git_prompt_status)
 %}%F{green}%K{black}%B%~%F{blue}⚒%b%k%f '
 
 RPROMPT="%(?.%{$fg[green]%}%B✔%b%{$reset_color%}.%{$fg[red]%}%B✘%b%{$reset_color%}) "
