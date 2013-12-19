@@ -9,7 +9,7 @@ update_interval 3
 total_run_times 0
 own_window yes
 own_window_argb_visual true
-own_window_argb_value 185
+own_window_argb_value 135
 own_window_type override
 #own_window_transparent yes
 own_window_type desktop
@@ -47,9 +47,9 @@ ${color white}${font sans-serif:bold:size=8}RAM: ${color #ddaa00}$mem${alignr}${
 ${color white}SWAP: ${color #00aa00}$swap${alignr}${swapbar 8,98}
 
 ${color green}${font sans-serif:bold:size=8}Network ${color white}${hr 2}
-${color white}${font sans-serif:bold:size=8}Down: ${color #8844ee}${downspeed wlan0} kb/s${color white}${alignr}Up:${color #22ccff}${upspeed wlan0} kb/s
-${downspeedgraph wlan0 20,98}${alignr}${color #8844ee}${upspeedgraph wlan0 20,98}
-${color #8844ee}${totaldown wlan0}${alignr}${color #22ccff}${totalup wlan0}
+${color white}${font sans-serif:bold:size=8}Down: ${color #8844ee}${downspeed eth0} kb/s${color white}${alignr}Up:${color #22ccff}${upspeed eth0} kb/s
+${downspeedgraph eth0 20,98}${alignr}${color #8844ee}${upspeedgraph eth0 20,98}
+${color #8844ee}${totaldown eth0}${alignr}${color #22ccff}${totalup eth0}
 
 ${color green}${font sans-serif:bold:size=8}Top${color white}${hr 2}
 ${color green}Name                  ${alignr}CPU%   MEM%
@@ -65,6 +65,6 @@ ${color green}${font sans-serif:bold:size=8}Temperature${color white}${hr 2}
 ${color white}CPU:${color #ddaa00} ${acpitemp}${color white}°C
 
 ${color green}${font sans-serif:bold:size=8}Battery${color white}${hr 2}
-Percent: ${color #8844ee}${battery_percent}%${alignr}${battery_bar 8,98}
+Percent: ${color #8844ee}${battery_percent}${color white}%${alignr}${color #8844ee}${battery_bar 8,98}
 
 ${color green}${font snas-serif:bold:size=10}${time %H:%M}${alignr}${time %b-%d %a}

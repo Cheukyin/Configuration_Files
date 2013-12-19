@@ -1,8 +1,8 @@
 let g:netrw_dirhistmax  =10
 let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/cheukyin/.oh-my-zsh/custom/example'
-let g:netrw_dirhist_2='/home/cheukyin/.oh-my-zsh/themes'
-let g:netrw_dirhist_3='/home/cheukyin'
-let g:netrw_dirhist_4='/home/cheukyin/.oh-my-zsh'
-let g:netrw_dirhist_5='/home/cheukyin/bash.bak'
-let g:netrw_dirhist_6='/home/cheukyin/youdao'
+let g:netrw_dirhist_1='/home/cheukyin/share/C51RF-CC2530-PK无线ZigBee网络开发平台V1.10/C51RF-CC2530演示程序/ZigBee2007_PRO演示测试程序/Texas Instruments/ZStack-CC2530-2.2.0-1.3.0/Projects/zstack/Samples'
+let g:netrw_dirhist_2='/home/cheukyin/share/C51RF-CC2530-PK无线ZigBee网络开发平台V1.10/C51RF-CC2530演示程序/ZigBee2007_PRO演示测试程序/Texas Instruments/ZStack-CC2530-2.2.0-1.3.0/Components/mac/include'
+let g:netrw_dirhist_3='/home/cheukyin/share/C51RF-CC2530-PK无线ZigBee网络开发平台V1.10/C51RF-CC2530演示程序/ZigBee2007_PRO演示测试程序/Texas-Instruments/ZStack-CC2530-2.2.0-1.3.0/Components/stack/af'
+let g:netrw_dirhist_4='/home/cheukyin/share/C51RF-CC2530-PK无线ZigBee网络开发平台V1.10/C51RF-CC2530演示程序/ZigBee2007_PRO演示测试程序/Texas-Instruments/ZStack-CC2530-2.2.0-1.3.0/Documents'
+let g:netrw_dirhist_5='/home/cheukyin/share/C51RF-CC2530-PK无线ZigBee网络开发平台V1.10/C51RF-CC2530演示程序/ZigBee2007_PRO演示测试程序/Texas-Instruments/ZStack-CC2530-2.2.0-1.3.0/Projects/zstack/Samples/SimpleApp'
+let g:netrw_dirhist_6='/home/cheukyin/bash_script'
