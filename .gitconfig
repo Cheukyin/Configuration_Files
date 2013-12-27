@@ -3,6 +3,7 @@
 	email = cheukyinyip0077@gmail.com
 [core]
 	editor = vim
+	compression = -1
 [merge]
 	tool = vimdiff
 [color]

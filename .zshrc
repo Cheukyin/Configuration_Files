@@ -258,3 +258,6 @@ alias -s mkv=$VIDEOPLAYER
 alias -s lisp='screen vim'
 
 alias -s log='less'
+
+PATH="$(ruby -e 'puts Gem.user_dir')/bin:$PATH"
+export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
