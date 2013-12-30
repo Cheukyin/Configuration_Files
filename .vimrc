@@ -702,3 +702,29 @@ function! InsertHtmlTag()
     :call cursor(save_cursor[1], save_cursor[2], save_cursor[3])
 endfunction
 autocmd filetype html,php inoremap > <ESC>:call InsertHtmlTag()<CR>a
+
+"Dictionary:firstly install sdcv(in .vim),then install the library(stardict-langdao-ec-gb,in .vim too)
+function! Mydict()
+  let expl=system('sdcv -n ' .
+        \  expand("<cword>"))
+  windo if
+        \ expand("%")=="diCt-tmp" |
+        \ q!|endif
+  25vsp diCt-tmp
+  setlocal buftype=nofile bufhidden=hide noswapfile
+  1s/^/\=expl/
+  1
+endfunction
+nnoremap <leader>f :call Mydict()<CR><C-w>l
+nnoremap <leader>fd :bdelete diCt-tmp<cr>
+
+"MRU:Recent Files
+let MRU_Max_Entries=50
+let MRU_Window_Height=10
+let MRU_Auto_Close=1
+nnoremap <silent><leader>h :MRU<CR>
+
+"Fuzzyfinder:search files
+nnoremap <leader><F8> :FufCoverageFile<cr>
+"limit the filetype
+nnoremap <leader>sf :let g:fuf_coveragefile_globPatterns=['**/*.']<left><left>
