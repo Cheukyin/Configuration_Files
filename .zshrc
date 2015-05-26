@@ -271,3 +271,12 @@ source /usr/local/bin/virtualenvwrapper.sh
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
 fi
+
+# JAVA Configuration
+export JAVA_HOME="/home/cheukyin/Downloads/Android/jdk1.8.0_45"
+export JRE_HOME="/home/cheukyin/Downloads/Android/jdk1.8.0_45/jre"
+export CLASSPATH=$JAVA_HOME/lib:$JRE_HOME/lib
+export ECLIPSE_HOME="/home/cheukyin/Downloads/Android/eclipse"
+#Android Configuration
+export ANDROID_HOME="/home/cheukyin/Downloads/Android/android-sdk-linux"
+export PATH="$ECLIPSE_HOME:$JAVA_HOME/bin:$ANDROID_HOME:$PATH"
