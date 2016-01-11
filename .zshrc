@@ -143,9 +143,11 @@ alias dualscreen-off='xrandr --output LVDS1 --auto --output VGA1 --off'
 
 alias usb2serial='sudo modprobe usbserial vendor=0x0403 product=0x6001'
 
-ZIGBEE=~/share/C51RF-CC2530-PK无线ZigBee网络开发平台V1.10/C51RF-CC2530演示程序/ZigBee2007_PRO演示测试程序/Texas-Instruments/ZStack-CC2530-2.2.0-1.3.0
+alias emacsserver='emacs --daemon'
+alias emacsclient='emacsclient -c'
 
-source /usr/share/doc/pkgfile/command-not-found.zsh
+
+#source /usr/share/doc/pkgfile/command-not-found.zsh
 
 #up-line-or-search-prefix () {
 #    local CURSOR_before_search=$CURSOR
@@ -264,13 +266,13 @@ export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
 
 
 ## VirtualenvWrapper
-if [ `id -u` != '0' ]; then
-export VIRTUALENV_USE_DISTRIBUTE=1        # <-- Always use pip/distribute
-export WORKON_HOME=$HOME/.virtualenvs       # <-- Where all virtualenvs will be stored
-source /usr/local/bin/virtualenvwrapper.sh
-export PIP_VIRTUALENV_BASE=$WORKON_HOME
-export PIP_RESPECT_VIRTUALENV=true
-fi
+#if [ `id -u` != '0' ]; then
+#export VIRTUALENV_USE_DISTRIBUTE=1        # <-- Always use pip/distribute
+#export WORKON_HOME=$HOME/.virtualenvs       # <-- Where all virtualenvs will be stored
+#source /usr/local/bin/virtualenvwrapper.sh
+#export PIP_VIRTUALENV_BASE=$WORKON_HOME
+#export PIP_RESPECT_VIRTUALENV=true
+#fi
 
 # JAVA Configuration
 export JAVA_HOME="/home/cheukyin/Downloads/Android/jdk1.8.0_45"
